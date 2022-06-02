@@ -1,0 +1,20 @@
+#!/bin/sh
+
+set -e # If anything fails, stop the script.
+set -u # If an undefined variable is expanded, stop the script.
+
+ROOT=$(git rev-parse --show-toplevel)
+
+cd "${ROOT}"
+
+if [ ! -d tmp/ ]; then
+  echo "tmp/ directory is missing. Create it and add initial photos with .HEIC extension."
+  exit 1
+fi
+
+if [ -z "$(ls -A tmp/)" ]; then
+  echo "tmp/ directory is empty. Add initial photos with .HEIC extension."
+  exit 1
+fi
+
+parallel --verbose convert -strip -quality 100 {} src/{/.}.png ::: tmp/*.HEIC

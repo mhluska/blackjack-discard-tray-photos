@@ -1,0 +1,26 @@
+{
+  "name": "discard-tray-photos",
+  "version": "0.0.1",
+  "description": "Sequential photos of cards piled in a discard tray (useful for deck estimation practice)",
+  "main": "preview.gif",
+  "scripts": {
+    "build": "./scripts/convert && ./scripts/optimize && ./scripts/create-gif",
+    "prepublish": "npm run build"
+  },
+  "repository": {
+    "type": "git",
+    "url": "git+https://github.com/mhluska/blackjack-discard-tray-photos.git"
+  },
+  "keywords": [
+    "blackjack",
+    "discard-tray",
+    "training",
+    "photos"
+  ],
+  "author": "BlackjackTrainer <contact@mail.blackjacktrainer.app>",
+  "license": "MIT",
+  "bugs": {
+    "url": "https://github.com/mhluska/blackjack-discard-tray-photos/issues"
+  },
+  "homepage": "https://github.com/mhluska/blackjack-discard-tray-photos#readme"
+}

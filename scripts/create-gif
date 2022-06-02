@@ -1,0 +1,10 @@
+#!/bin/sh
+
+set -e # If anything fails, stop the script.
+set -u # If an undefined variable is expanded, stop the script.
+
+ROOT=$(git rev-parse --show-toplevel)
+
+cd "${ROOT}"
+
+convert -verbose -resize 830x -loop 0 -delay 1x50 src/*.png preview.gif

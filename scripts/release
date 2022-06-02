@@ -1,0 +1,23 @@
+#!/bin/sh
+
+set -e # If anything fails, stop the script.
+set -u # If an undefined variable is expanded, stop the script.
+
+if [ "${#}" -lt 1 ]; then
+  echo "Usage: ${0} [patch|minor|major]"
+  exit 1
+fi
+
+ROOT=$(git rev-parse --show-toplevel)
+VERSION_TYPE="${1}"
+
+cd "${ROOT}"
+
+npm version "${VERSION_TYPE}"
+
+version=$(git log --pretty=format:%s | head -n 1)
+filename="discard-tray-photos-${version}.zip"
+
+zip "${filename}" src/*.png
+gh release create v${version} --title v${version} --notes '' "${filename}"
+rm "${filename}"
