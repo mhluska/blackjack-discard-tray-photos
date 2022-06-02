@@ -1,0 +1,15 @@
+#!/bin/sh
+
+set -e # If anything fails, stop the script.
+set -u # If an undefined variable is expanded, stop the script.
+
+ROOT=$(git rev-parse --show-toplevel)
+
+cd "${ROOT}"
+
+# Commit source photos in batches (useful for slow upload speeds).
+for offset in $(seq 0 9); do
+  git add $(ls -1 src/*.png | awk "NR == 1 || (NR + ${offset}) % 10 == 0")
+  git commit -m "Add photos (offset ${offset})"
+  git push
+done
