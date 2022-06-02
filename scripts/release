@@ -23,6 +23,6 @@ npm version "${VERSION_TYPE}"
 version=$(git log --pretty=format:%s | head -n 1)
 filename="discard-tray-photos-${version}.zip"
 
-zip -r "${filename}" dist/
-gh release create v${version} --title v${version} --notes '' "${filename}"
+zip -r "${filename}" dist/*
+gh release create ${version} --title ${version} --notes '' "${filename}"
 rm "${filename}"
