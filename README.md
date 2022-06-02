@@ -1,6 +1,4 @@
-<p align="center">
-  <img src="https://github.com/mhluska/discard-tray-photos/raw/master/preview.gif" alt="Preview" />
-</p>
+<img src="https://github.com/mhluska/blackjack-discard-tray-photos/raw/master/preview.gif" alt="Preview" />
 
 # Discard Tray Photos
 
@@ -21,7 +19,7 @@ brew install imageoptim imagemagick parallel
 
 ## FAQ
 
-- Why is there 365 photos?
+- Why are there 365 photos?
 
 One photo of the empty tray plus 364 card photos (7 decks). I used a 6 deck
 discard tray but managed to fit 7 decks in there. You really only need the first

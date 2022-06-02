@@ -7,4 +7,6 @@ ROOT=$(git rev-parse --show-toplevel)
 
 cd "${ROOT}"
 
-convert -verbose -resize 830x -loop 0 -delay 1x50 src/*.png preview.gif
+# Uses only every nth frame to save space.
+convert -verbose -resize 415x -loop 0 -delay 1x60 $(ls -1 src/*.png | awk 'NR == 1 || NR % 4 == 0') preview.gif
+mogrify -layers 'optimize' -fuzz 2% preview.gif

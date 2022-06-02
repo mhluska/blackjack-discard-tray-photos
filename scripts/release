@@ -13,11 +13,19 @@ VERSION_TYPE="${1}"
 
 cd "${ROOT}"
 
+for size in 1024x 768x 480x; do
+  mkdir -p "dist/${size}"
+  parallel --verbose convert -resize "${size}" -quality 100 {} "dist/${size}/{/.}.png" ::: src/*.png
+done
+
+mkdir dist/original
+cp -r src/*.png dist/original
+
 npm version "${VERSION_TYPE}"
 
 version=$(git log --pretty=format:%s | head -n 1)
 filename="discard-tray-photos-${version}.zip"
 
-zip "${filename}" src/*.png
+zip "${filename}" dist/
 gh release create v${version} --title v${version} --notes '' "${filename}"
 rm "${filename}"
