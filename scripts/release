@@ -16,6 +16,7 @@ cd "${ROOT}"
 for size in 1024x 768x 480x; do
   mkdir -p "dist/${size}"
   parallel --verbose convert -resize "${size}" -quality 100 {} "dist/${size}/{/.}.png" ::: src/*.png
+  imageoptim "dist/${size}"
 done
 
 npm version "${VERSION_TYPE}"
